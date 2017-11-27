@@ -93,6 +93,6 @@ public class MainUI extends UI {
 		rootLayout.addComponent(dateLabel);
 		
 		logger.info(LoggingMessages.DATE_PRINT.getString() + ": " + formattedDate);
-		logger.debug("Exiting buildLayout()");
+		logger.debug(LoggingMessages.DATE_PRINT_EXIT.getString());
 	}
 }
