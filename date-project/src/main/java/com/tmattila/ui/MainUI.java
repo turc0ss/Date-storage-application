@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tmattila.model.Dates;
-import com.tmattila.repository.DateRepository;
+import com.tmattila.service.DateService;
 import com.tmattila.utils.DateStringUtils;
 import com.tmattila.utils.LoggingMessages;
 import com.vaadin.annotations.Theme;
@@ -23,6 +23,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+@SuppressWarnings("serial")
 @Theme("valo")
 @Title("Date Project")
 @SpringUI(path = "/ui")
@@ -45,11 +46,15 @@ public class MainUI extends UI {
 	private Date date;
 
 	private DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	
+	private Dates dates;
 
 	@Override
 	protected void init(VaadinRequest request) {
 		
 		logger.debug(LoggingMessages.START_PROGRAM.getString());
+		
+		dates = new Dates();
 
 		rootLayout = new VerticalLayout();
 		headerLayout = new HorizontalLayout();
@@ -83,11 +88,11 @@ public class MainUI extends UI {
 	}
 	
 	@Autowired
-	private DateRepository dateRepository;
-
+	DateService dateService;
+	
 	private void buildLayout() {
 
-		logger.debug(LoggingMessages.DATE_PRINT_START.getString());
+		logger.debug(LoggingMessages.DATE_PRINT_ENTER.getString());
 
 		date = new Date();
 		String formattedDate = dateF.format(date);
@@ -95,12 +100,22 @@ public class MainUI extends UI {
 		Label timeLabel = new Label("<b>" + DateStringUtils.DATE_TEXT.getString() + " </b>", ContentMode.HTML);
 		Label dateLabel = new Label(timeLabel.getValue() + formattedDate, ContentMode.HTML);
 		
-		dateRepository.save(new Dates("Date:", formattedDate));
-
+		saveDate();
+		
 		dateMarkings.addComponent(dateLabel);
 		rootLayout.addComponent(dateLabel);
 		
 		logger.info(LoggingMessages.DATE_PRINT.getString() + ": " + formattedDate);
 		logger.debug(LoggingMessages.DATE_PRINT_EXIT.getString());
+	}
+	
+	private void saveDate() {
+		try {
+			dateService.saveDateToRepository(dates);
+			logger.debug(LoggingMessages.DATE_SAVED_TO_DB.getString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(LoggingMessages.DATE_SAVE_ERROR.getString());
+		}
 	}
 }

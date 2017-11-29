@@ -1,5 +1,9 @@
 package com.tmattila.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -13,11 +17,43 @@ public class Dates {
 	@Field(value="Title:")
 	private String title;
 	
-	@Field(value = "Date:")
-	private String dateForm;
+	private Date date;
 	
-	public Dates(String title, String dateForm) {
-		this.title = title;
-		this.dateForm = dateForm;
+	@Field(value = "Date:")
+	private String formattedDate;
+	
+	public Dates() {
+		
 	}
+	
+	public final String getTitle() {
+		return title;
+	}
+
+	public final void setTitle(final String title) {
+		this.title = title;
+	}
+
+	public final Date getDate() {
+		return this.date;
+	}
+
+	public final void setDate(final Date date) {
+		this.date = new Date();
+	}
+	public final String getDateForm() {
+		return this.formattedDate;
+	}
+
+	public final void setDateForm(final String formattedDate) {
+		Date date = new Date();
+		DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		this.formattedDate = dateF.format(date);
+	}
+
+	@Override
+	public String toString() {
+		return "Dates [title=" + title + ", date=" + formattedDate + "]";
+	}
+	
 }
