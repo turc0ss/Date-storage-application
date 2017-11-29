@@ -41,11 +41,11 @@ public class Dates {
 	public final void setDate(final Date date) {
 		this.date = new Date();
 	}
-	public final String getDateForm() {
+	public final String getFormattedDate() {
 		return this.formattedDate;
 	}
 
-	public final void setDateForm(final String formattedDate) {
+	public final void setFormattedDate(final String formattedDate) {
 		Date date = new Date();
 		DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		this.formattedDate = dateF.format(date);

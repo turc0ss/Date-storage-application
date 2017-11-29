@@ -65,7 +65,7 @@ public class MainUI extends UI {
 		buttonLayout = new HorizontalLayout();
 		buttonLayout.setMargin(false);
 		buttonLayout.setSpacing(false);
-
+		
 		dateButton = new Button(DateStringUtils.BUTTON_TEXT.getString());
 		dateMarkings = new HorizontalLayout();
 

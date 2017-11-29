@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tmattila.model.Dates;
 import com.tmattila.repository.DateRepository;
+import com.tmattila.utils.DateStringUtils;
 import com.tmattila.utils.LoggingMessages;
 
 @Service
@@ -24,8 +25,8 @@ public class DateServiceImpl implements DateService {
 		
 		Dates dates = new Dates();
 		logger.info(LoggingMessages.DATES_OBJECT_CREATED.getString());
-		dates.setTitle("DATE");
-		dates.setDateForm(dateDAO.getDateForm());
+		dates.setTitle(DateStringUtils.DATE_TITLE.getString());
+		dates.setFormattedDate(dateDAO.getFormattedDate());
 		logger.info(dates.toString());
 		dateRepository.save(dates);
 		
