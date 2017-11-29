@@ -6,7 +6,10 @@ import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.tmattila.model.Dates;
+import com.tmattila.repository.DateRepository;
 import com.tmattila.utils.DateStringUtils;
 import com.tmattila.utils.LoggingMessages;
 import com.vaadin.annotations.Theme;
@@ -78,6 +81,9 @@ public class MainUI extends UI {
 		rootLayout.addComponent(buttonLayout);
 		setContent(rootLayout);
 	}
+	
+	@Autowired
+	private DateRepository dateRepository;
 
 	private void buildLayout() {
 
@@ -88,6 +94,8 @@ public class MainUI extends UI {
 
 		Label timeLabel = new Label("<b>" + DateStringUtils.DATE_TEXT.getString() + " </b>", ContentMode.HTML);
 		Label dateLabel = new Label(timeLabel.getValue() + formattedDate, ContentMode.HTML);
+		
+		dateRepository.save(new Dates("Date:", formattedDate));
 
 		dateMarkings.addComponent(dateLabel);
 		rootLayout.addComponent(dateLabel);
