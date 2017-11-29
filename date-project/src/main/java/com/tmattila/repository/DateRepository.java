@@ -10,6 +10,4 @@ import com.tmattila.model.Dates;
 @Repository
 public interface DateRepository extends MongoRepository<Dates, Date>{
 	
-	public Dates findByDate(String dateF);
-	
 }
