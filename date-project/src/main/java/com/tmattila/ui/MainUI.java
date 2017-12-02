@@ -23,34 +23,71 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+/***
+ * MainUI class that holds all the ui related components. Extends vaadin UI class.
+ * @author Tapio Mattila
+ *
+ */
 @SuppressWarnings("serial")
 @Theme("valo")
 @Title("Date Project")
 @SpringUI(path = "/ui")
 public class MainUI extends UI {
 
+	/***
+	 * Logger class initialization for MainUI class. 
+	 * This class is used to print log messages.
+	 */
 	private static final Logger logger = LogManager.getLogger(MainUI.class);
 
+	/***
+	 * MainLayout component rootLayout.
+	 */
 	private VerticalLayout rootLayout;
 
+	/***
+	 * HorizontalLayout that holds the headerLayout.
+	 */
 	private HorizontalLayout headerLayout;
 
+	/***
+	 * Own horizontalLayout to hold buttonLayout.
+	 */
 	private HorizontalLayout buttonLayout;
 
+	/***
+	 * HorizontalLayout that holds dateMarkings. 
+	 * Is used to show the dates in the browser.
+	 */
 	private HorizontalLayout dateMarkings;
 
+	/***
+	 * Label that holds header text.
+	 */
 	private Label headerLabel;
 
+	/***
+	 * Button that is used to print dates to browser and save to database.
+	 */
 	private Button dateButton;
 
+	/***
+	 * Date class that is recording the currect time and date.
+	 */
 	private Date date;
 
+	/***
+	 * DateFormat class that uses SimpleDateFormat to format the date in custom form.
+	 */
 	private DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
+	/***
+	 * Dates entity that holds the information that is saved in to database.
+	 */
 	private Dates dates;
 
 	@Override
-	protected void init(VaadinRequest request) {
+	protected final void init(final VaadinRequest request) {
 		
 		logger.debug(LoggingMessages.START_PROGRAM.getString());
 		
@@ -87,9 +124,15 @@ public class MainUI extends UI {
 		setContent(rootLayout);
 	}
 	
+	/***
+	 * Autowired DateService interfac to be able to save dates in to database through service class.
+	 */
 	@Autowired
-	DateService dateService;
+	private DateService dateService;
 	
+	/***
+	 * BuildLayout method to seperate layout creation to its own method.
+	 */
 	private void buildLayout() {
 
 		logger.debug(LoggingMessages.DATE_PRINT_ENTER.getString());
@@ -109,6 +152,9 @@ public class MainUI extends UI {
 		logger.debug(LoggingMessages.DATE_PRINT_EXIT.getString());
 	}
 	
+	/***
+	 * SaveDate method to seperate saving data to database on its own method and to include try catch block to check errors.
+	 */
 	private void saveDate() {
 		try {
 			dateService.saveDateToRepository(dates);

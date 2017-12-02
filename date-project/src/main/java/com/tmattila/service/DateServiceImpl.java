@@ -10,13 +10,25 @@ import com.tmattila.repository.DateRepository;
 import com.tmattila.utils.DateStringUtils;
 import com.tmattila.utils.LoggingMessages;
 
+/***
+ * DateServiceImpl service class that handles the connection to database.
+ * @author Tapio Mattila
+ *
+ */
 @Service
 public class DateServiceImpl implements DateService {
 
+	/***
+	 * Logger class initialization for DateServiceImpl class.
+	 * This class is used to print log messages.
+	 */
 	private static final Logger logger = LogManager.getLogger(DateServiceImpl.class);
 	
+	/***
+	 * Autowired DateRepository interface to use repository methods inside DateServiceImpl classs
+	 */
 	@Autowired
-	DateRepository dateRepository;
+	private DateRepository dateRepository;
 	
 	@Override
 	public final void saveDateToRepository(final Dates dateDAO) {
