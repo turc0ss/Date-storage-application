@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.tmattila.model.Dates;
 
+/***
+ * DateRepository interface that uses the functionality of MongoRepository.
+ * @author Tapio Mattila
+ *
+ */
 @Repository
 public interface DateRepository extends MongoRepository<Dates, Date>{
 	

@@ -19,7 +19,7 @@ public class DateServiceImpl implements DateService {
 	DateRepository dateRepository;
 	
 	@Override
-	public void saveDateToRepository(Dates dateDAO) {
+	public final void saveDateToRepository(final Dates dateDAO) {
 		
 		logger.debug(LoggingMessages.SAVEDATETOREPOSITORY_ENTER.getString());
 		
