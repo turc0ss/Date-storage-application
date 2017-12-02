@@ -7,7 +7,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /***
- * Date storage application
+ * Date storage application.
  * @author Tapio Mattila
  *
  */
@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class App extends SpringBootServletInitializer {
 
 	/***
-	 * main method for an application
+	 * Main method for the application.
 	 * @param args
 	 */
 	public static void main(final String[] args) {

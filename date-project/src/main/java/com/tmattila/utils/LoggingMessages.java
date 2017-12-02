@@ -1,5 +1,10 @@
 package com.tmattila.utils;
 
+/***
+ * Enum class LoggingMessages that holds the string representations that are used in the application.
+ * @author Tapio Mattila
+ *
+ */
 public enum LoggingMessages {
 	
 	START_PROGRAM("Start program"),
@@ -13,14 +18,24 @@ public enum LoggingMessages {
 	SAVEDATETOREPOSITORY_ENTER("Enter saveDateToRepository()"),
 	SAVEDATETOREPOSITORY_EXIT("Exit saveDateToRepository()");
 	
+	/***
+	 * Set the string variable to use.
+	 */
 	private final String string;
 	
+	/***
+	 * DateStringUtils constructor.
+	 * @param string
+	 */
 	private LoggingMessages(final String string) {
 		this.string = string;
 	}
 	
+	/***
+	 * GetString method to show the string representation.
+	 * @return string
+	 */
 	public String getString() {
 		return string;
 	}
-	
 }
