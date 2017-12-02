@@ -47,7 +47,7 @@ public class DateToRepositoryTest {
 		dates.setTitle(DateStringUtils.DATE_TEST_TITLE.getString());
 		dates.setFormattedDate(formattedDate);
 		Assert.assertNotNull(dateRepository.save(dates));
-		System.out.println(formattedDate);
+		logger.info(formattedDate);
 		logger.info("Test complete");
 		logger.debug("Exit test");
 	}
