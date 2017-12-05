@@ -16,7 +16,10 @@ public enum LoggingMessages {
 	DATE_SAVE_ERROR("Error saving date to database"),
 	DATES_OBJECT_CREATED("New Dates object created"),
 	SAVEDATETOREPOSITORY_ENTER("Enter saveDateToRepository()"),
-	SAVEDATETOREPOSITORY_EXIT("Exit saveDateToRepository()");
+	SAVEDATETOREPOSITORY_EXIT("Exit saveDateToRepository()"),
+	ENTER_REPOSITORY_TEST("Enter repository test"),
+	REPOSITORY_TEST_COMPLETE("Test complete"),
+	EXIT_REPOSITORY_TEST("Exit test");
 	
 	/***
 	 * Set the string variable to use.

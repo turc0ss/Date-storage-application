@@ -19,6 +19,7 @@ import com.tmattila.App;
 import com.tmattila.model.Dates;
 import com.tmattila.repository.DateRepository;
 import com.tmattila.utils.DateStringUtils;
+import com.tmattila.utils.LoggingMessages;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
@@ -39,7 +40,7 @@ public class DateToRepositoryTest {
 
 	@Test
 	public void test() {
-		logger.debug("Enter repository test");
+		logger.debug(LoggingMessages.ENTER_REPOSITORY_TEST.getString());
 		Date date = new Date();
 		DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		String formattedDate = dateF.format(date);
@@ -48,7 +49,7 @@ public class DateToRepositoryTest {
 		dates.setFormattedDate(formattedDate);
 		Assert.assertNotNull(dateRepository.save(dates));
 		logger.info(formattedDate);
-		logger.info("Test complete");
-		logger.debug("Exit test");
+		logger.info(LoggingMessages.REPOSITORY_TEST_COMPLETE.getString());
+		logger.debug(LoggingMessages.EXIT_REPOSITORY_TEST.getString());
 	}
 }
